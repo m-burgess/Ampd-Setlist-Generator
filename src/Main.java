@@ -7,11 +7,13 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Main {
 
 	private JFrame frmAmpdSetlistGenerator;
-	private JTextField textField;
+	private JTextField fileTextField;
 
 	/**
 	 * Launch the application.
@@ -49,49 +51,62 @@ public class Main {
 		frmAmpdSetlistGenerator.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 		
-		textField = new JTextField();
-		textField.setBounds(152, 11, 248, 20);
-		panel.add(textField);
-		textField.setColumns(10);
+		fileTextField = new JTextField();
+		fileTextField.setBounds(152, 11, 248, 20);
+		panel.add(fileTextField);
+		fileTextField.setColumns(10);
 		
-		JButton btnNewButton = new JButton("New button");
-		btnNewButton.setBounds(10, 10, 112, 23);
-		panel.add(btnNewButton);
+		JButton selectFileButton = new JButton("Select File");
+		selectFileButton.setBounds(10, 10, 112, 23);
+		panel.add(selectFileButton);
 		
-		JLabel lblNewLabel = new JLabel("New label");
+		JLabel lblNewLabel = new JLabel("Song 1");
 		lblNewLabel.setBounds(33, 58, 89, 14);
 		panel.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("New label");
+		JLabel lblNewLabel_1 = new JLabel("Song 2");
 		lblNewLabel_1.setBounds(33, 105, 89, 14);
 		panel.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("New label");
+		JLabel lblNewLabel_2 = new JLabel("Song 3");
 		lblNewLabel_2.setBounds(33, 154, 89, 14);
 		panel.add(lblNewLabel_2);
 		
-		JLabel lblNewLabel_3 = new JLabel("New label");
+		JLabel lblNewLabel_3 = new JLabel("Song 4");
 		lblNewLabel_3.setBounds(33, 207, 89, 14);
 		panel.add(lblNewLabel_3);
 		
-		JLabel lblNewLabel_4 = new JLabel("New label");
-		lblNewLabel_4.setBounds(228, 58, 278, 14);
-		panel.add(lblNewLabel_4);
+		JLabel song1Label = new JLabel("New label");
+		song1Label.setBounds(228, 58, 278, 14);
+		panel.add(song1Label);
 		
-		JLabel lblNewLabel_5 = new JLabel("New label");
-		lblNewLabel_5.setBounds(228, 105, 278, 14);
-		panel.add(lblNewLabel_5);
+		JLabel song2Label = new JLabel("New label");
+		song2Label.setBounds(228, 105, 278, 14);
+		panel.add(song2Label);
 		
-		JLabel lblNewLabel_6 = new JLabel("New label");
-		lblNewLabel_6.setBounds(228, 154, 278, 14);
-		panel.add(lblNewLabel_6);
+		JLabel song3Label = new JLabel("New label");
+		song3Label.setBounds(228, 154, 278, 14);
+		panel.add(song3Label);
 		
-		JLabel lblNewLabel_7 = new JLabel("New label");
-		lblNewLabel_7.setBounds(232, 207, 274, 14);
-		panel.add(lblNewLabel_7);
+		JLabel song4Label = new JLabel("New label");
+		song4Label.setBounds(228, 207, 274, 14);
+		panel.add(song4Label);
 		
-		JButton btnNewButton_1 = new JButton("Generate");
-		btnNewButton_1.setBounds(152, 253, 135, 23);
-		panel.add(btnNewButton_1);
+		JButton generateButton = new JButton("Generate");
+		generateButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				BusinessLogic bL = new BusinessLogic();
+				
+				song1Label.setText(bL.GenerateSong1());
+				song2Label.setText(bL.GenerateSong2());
+				song3Label.setText(bL.GenerateSong3());
+				song4Label.setText(bL.GenerateSong4());
+				
+				
+			}
+		});
+		generateButton.setBounds(152, 253, 135, 23);
+		panel.add(generateButton);
 	}
+	
 }
