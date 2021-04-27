@@ -13,7 +13,6 @@ import java.awt.event.ActionEvent;
 public class Main {
 
 	private JFrame frmAmpdSetlistGenerator;
-	private JTextField fileTextField;
 
 	/**
 	 * Launch the application.
@@ -44,55 +43,30 @@ public class Main {
 	private void initialize() {
 		frmAmpdSetlistGenerator = new JFrame();
 		frmAmpdSetlistGenerator.setTitle("AMP'D Setlist Generator");
-		frmAmpdSetlistGenerator.setBounds(100, 100, 532, 345);
+		frmAmpdSetlistGenerator.setBounds(100, 100, 341, 349);
 		frmAmpdSetlistGenerator.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
 		frmAmpdSetlistGenerator.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 		
-		fileTextField = new JTextField();
-		fileTextField.setBounds(152, 11, 248, 20);
-		panel.add(fileTextField);
-		fileTextField.setColumns(10);
-		
-		JButton selectFileButton = new JButton("Select File");
-		selectFileButton.setBounds(10, 10, 112, 23);
-		panel.add(selectFileButton);
-		
 		JLabel lblNewLabel = new JLabel("Song 1");
-		lblNewLabel.setBounds(33, 58, 89, 14);
+		lblNewLabel.setBounds(58, 11, 257, 14);
 		panel.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Song 2");
-		lblNewLabel_1.setBounds(33, 105, 89, 14);
+		lblNewLabel_1.setBounds(58, 58, 257, 14);
 		panel.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Song 3");
-		lblNewLabel_2.setBounds(33, 154, 89, 14);
+		lblNewLabel_2.setBounds(58, 107, 257, 14);
 		panel.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("Song 4");
-		lblNewLabel_3.setBounds(33, 207, 89, 14);
+		lblNewLabel_3.setBounds(58, 160, 257, 14);
 		panel.add(lblNewLabel_3);
 		
-		JLabel song1Label = new JLabel("New label");
-		song1Label.setBounds(228, 58, 278, 14);
-		panel.add(song1Label);
-		
-		JLabel song2Label = new JLabel("New label");
-		song2Label.setBounds(228, 105, 278, 14);
-		panel.add(song2Label);
-		
-		JLabel song3Label = new JLabel("New label");
-		song3Label.setBounds(228, 154, 278, 14);
-		panel.add(song3Label);
-		
-		JLabel song4Label = new JLabel("New label");
-		song4Label.setBounds(228, 207, 274, 14);
-		panel.add(song4Label);
-		
-		JButton generateButton = new JButton("Generate");
+		JButton generateButton = new JButton("Add song");
 		generateButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				BusinessLogic bL = new BusinessLogic();
@@ -105,8 +79,15 @@ public class Main {
 				
 			}
 		});
-		generateButton.setBounds(152, 253, 135, 23);
+		generateButton.setBounds(10, 208, 135, 45);
 		panel.add(generateButton);
+		
+		JButton btnExportAllSongs = new JButton("Export All Songs");
+		btnExportAllSongs.setBounds(155, 208, 135, 45);
+		panel.add(btnExportAllSongs);
+		
+		JButton generateButton_1 = new JButton("Generate");
+		generateButton_1.setBounds(79, 260, 135, 45);
+		panel.add(generateButton_1);
 	}
-	
 }
