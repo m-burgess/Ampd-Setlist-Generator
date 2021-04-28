@@ -54,7 +54,7 @@ public class BusinessLogic
 	
 	{
 		List<Path> result;
-		Path path = Paths.get(directory, null);
+		Path path = Paths.get(directory);
         try (Stream<Path> walk = Files.walk(path)) {
             result = walk.filter(Files::isRegularFile)
                     .collect(Collectors.toList());
@@ -67,27 +67,23 @@ public class BusinessLogic
        
 	}
 	
-	public String GenerateSong1() throws IOException
+	public String GenerateSong1(String directory) throws IOException
 	{
-		String path = SelectFastSongDirectory();
+		return GenerateRandomSong(directory);
+	}
+	
+	public String GenerateSong2(String directory) throws IOException
+	{
 		return GenerateRandomSong(path);
 	}
 	
-	public String GenerateSong2() throws IOException
+	public String GenerateSong3(String directory) throws IOException
 	{
-		String path = SelectFastSongDirectory();
 		return GenerateRandomSong(path);
 	}
 	
-	public String GenerateSong3() throws IOException
+	public String GenerateSong4(String directory) throws IOException
 	{
-		String path = SelectSlowSongDirectory();
-		return GenerateRandomSong(path);
-	}
-	
-	public String GenerateSong4() throws IOException
-	{
-		String path = SelectSlowSongDirectory();
 		return GenerateRandomSong(path);
 	}
 
