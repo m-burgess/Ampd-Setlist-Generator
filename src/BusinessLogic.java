@@ -1,25 +1,94 @@
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import javax.swing.JFileChooser;
 
 public class BusinessLogic 
 {
-	
-	public String GenerateSong1()
+	public String SelectFastSongDirectory()
 	{
-		return "Test";
+		 JFileChooser chooser = new JFileChooser();
+		    chooser.setCurrentDirectory(new java.io.File("."));
+		    chooser.setDialogTitle("Select Fast Song Reaper Project folder");
+		    chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+		    chooser.setAcceptAllFileFilterUsed(false);
+
+		    if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) 
+		    {
+		      return chooser.getCurrentDirectory().toString();
+		    }
+		    else 
+		    {
+		    	return "Not Found";
+		    }
 	}
 	
-	public String GenerateSong2()
+	public String SelectSlowSongDirectory()
 	{
-		return "Test2";
+		 JFileChooser chooser = new JFileChooser();
+		    chooser.setCurrentDirectory(new java.io.File("."));
+		    chooser.setDialogTitle("Select Slow Song Reaper Project folder");
+		    chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+		    chooser.setAcceptAllFileFilterUsed(false);
+
+		    if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) 
+		    {
+		      return chooser.getCurrentDirectory().toString();
+		    }
+		    else 
+		    {
+		    	return "Not Found";
+		    }
 	}
 	
-	public String GenerateSong3()
+	
+	
+	public String GenerateRandomSong (String directory) throws IOException
+	
 	{
-		return "Test";
+		List<Path> result;
+		Path path = Paths.get(directory, null);
+        try (Stream<Path> walk = Files.walk(path)) {
+            result = walk.filter(Files::isRegularFile)
+                    .collect(Collectors.toList());
+            
+            Random rand = new Random();
+            Path randomElement = result.get(rand.nextInt(result.size()));
+            
+            return randomElement.toString();
+        }
+       
 	}
 	
-	public String GenerateSong4()
+	public String GenerateSong1() throws IOException
 	{
-		return "Test";
+		String path = SelectFastSongDirectory();
+		return GenerateRandomSong(path);
+	}
+	
+	public String GenerateSong2() throws IOException
+	{
+		String path = SelectFastSongDirectory();
+		return GenerateRandomSong(path);
+	}
+	
+	public String GenerateSong3() throws IOException
+	{
+		String path = SelectSlowSongDirectory();
+		return GenerateRandomSong(path);
+	}
+	
+	public String GenerateSong4() throws IOException
+	{
+		String path = SelectSlowSongDirectory();
+		return GenerateRandomSong(path);
 	}
 
 }

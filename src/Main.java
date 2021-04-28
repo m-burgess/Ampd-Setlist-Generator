@@ -66,28 +66,12 @@ public class Main {
 		lblNewLabel_3.setBounds(58, 160, 257, 14);
 		panel.add(lblNewLabel_3);
 		
-		JButton generateButton = new JButton("Add song");
-		generateButton.addActionListener(new ActionListener() {
+		JButton generateButton_1 = new JButton("Generate");
+		generateButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				BusinessLogic bL = new BusinessLogic();
-				
-				song1Label.setText(bL.GenerateSong1());
-				song2Label.setText(bL.GenerateSong2());
-				song3Label.setText(bL.GenerateSong3());
-				song4Label.setText(bL.GenerateSong4());
-				
-				
 			}
 		});
-		generateButton.setBounds(10, 208, 135, 45);
-		panel.add(generateButton);
-		
-		JButton btnExportAllSongs = new JButton("Export All Songs");
-		btnExportAllSongs.setBounds(155, 208, 135, 45);
-		panel.add(btnExportAllSongs);
-		
-		JButton generateButton_1 = new JButton("Generate");
-		generateButton_1.setBounds(79, 260, 135, 45);
+		generateButton_1.setBounds(79, 223, 135, 45);
 		panel.add(generateButton_1);
 	}
 }
