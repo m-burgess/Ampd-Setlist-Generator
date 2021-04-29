@@ -12,10 +12,10 @@ import javax.swing.JFileChooser;
 
 public class BusinessLogic 
 {
-	public String SelectFastSongDirectory()
+	public String SelectReaperProjectDirectory()
 	{
 		 JFileChooser chooser = new JFileChooser();
-		    chooser.setCurrentDirectory(new java.io.File("."));
+		    chooser.setCurrentDirectory(new java.io.File(System.getProperty("user.home")));
 		    chooser.setDialogTitle("Select Fast Song Reaper Project folder");
 		    chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 		    chooser.setAcceptAllFileFilterUsed(false);
@@ -30,22 +30,16 @@ public class BusinessLogic
 		    }
 	}
 	
+	public String SelectFastSongDirectory()
+	{
+		String reaperDirectory;
+		return reaperDirectory = SelectReaperProjectDirectory() + "/Fast";
+	}
+	
 	public String SelectSlowSongDirectory()
 	{
-		 JFileChooser chooser = new JFileChooser();
-		    chooser.setCurrentDirectory(new java.io.File("."));
-		    chooser.setDialogTitle("Select Slow Song Reaper Project folder");
-		    chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-		    chooser.setAcceptAllFileFilterUsed(false);
-
-		    if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) 
-		    {
-		      return chooser.getCurrentDirectory().toString();
-		    }
-		    else 
-		    {
-		    	return "Not Found";
-		    }
+		String reaperDirectory;
+		return reaperDirectory = SelectReaperProjectDirectory() + "/Slow";
 	}
 	
 	
@@ -74,17 +68,17 @@ public class BusinessLogic
 	
 	public String GenerateSong2(String directory) throws IOException
 	{
-		return GenerateRandomSong(path);
+		return GenerateRandomSong(directory);
 	}
 	
 	public String GenerateSong3(String directory) throws IOException
 	{
-		return GenerateRandomSong(path);
+		return GenerateRandomSong(directory);
 	}
 	
 	public String GenerateSong4(String directory) throws IOException
 	{
-		return GenerateRandomSong(path);
+		return GenerateRandomSong(directory);
 	}
 
 }

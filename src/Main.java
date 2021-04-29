@@ -51,35 +51,45 @@ public class Main {
 		frmAmpdSetlistGenerator.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Song 1");
-		lblNewLabel.setBounds(10, 11, 446, 14);
-		panel.add(lblNewLabel);
+		JLabel song1Label = new JLabel("Song 1");
+		song1Label.setBounds(10, 11, 446, 14);
+		panel.add(song1Label);
 		
-		JLabel lblNewLabel_1 = new JLabel("Song 2");
-		lblNewLabel_1.setBounds(10, 59, 446, 14);
-		panel.add(lblNewLabel_1);
+		JLabel song2Label = new JLabel("Song 2");
+		song2Label.setBounds(10, 59, 446, 14);
+		panel.add(song2Label);
 		
-		JLabel lblNewLabel_2 = new JLabel("Song 3");
-		lblNewLabel_2.setBounds(10, 114, 446, 14);
-		panel.add(lblNewLabel_2);
+		JLabel song3Label = new JLabel("Song 3");
+		song3Label.setBounds(10, 114, 446, 14);
+		panel.add(song3Label);
 		
-		JLabel lblNewLabel_3 = new JLabel("Song 4");
-		lblNewLabel_3.setBounds(10, 158, 446, 14);
-		panel.add(lblNewLabel_3);
+		JLabel song4Label = new JLabel("Song 4");
+		song4Label.setBounds(10, 158, 446, 14);
+		panel.add(song4Label);
 		
-		JButton generateButton_1 = new JButton("Generate");
-		generateButton_1.addActionListener(new ActionListener() {
+		JButton generateButton = new JButton("Generate");
+		generateButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
 				BusinessLogic logic = new BusinessLogic();
 				try {
 					String fastDirectory = logic.SelectFastSongDirectory();
-					String slowDirecotry = logic.SelectSlowSongDirectory();
+					String slowDirectory = logic.SelectSlowSongDirectory();
 					
-					lblNewLabel.setText(logic.GenerateSong1(fastDirectory));
-					lblNewLabel_1.setText(logic.GenerateSong1(fastDirectory));
-					lblNewLabel_2.setText(logic.GenerateSong1(slowDirecotry));
-					lblNewLabel_3.setText(logic.GenerateSong1(slowDirecotry));
+					
+					song1Label.setText(logic.GenerateSong1(fastDirectory));
+					song2Label.setText(logic.GenerateSong2(fastDirectory));
+					
+					if(song2Label.getText() == song1Label.getText())
+						song2Label.setText(logic.GenerateSong2(fastDirectory));
+					
+					
+					song3Label.setText(logic.GenerateSong3(slowDirectory));
+					
+					if(song4Label.getText() == song4Label.getText())
+						song4Label.setText(logic.GenerateSong2(fastDirectory));
+					song4Label.setText(logic.GenerateSong4(slowDirectory));
+					
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -87,7 +97,7 @@ public class Main {
 				
 			}
 		});
-		generateButton_1.setBounds(183, 224, 135, 45);
-		panel.add(generateButton_1);
+		generateButton.setBounds(183, 224, 135, 45);
+		panel.add(generateButton);
 	}
 }
