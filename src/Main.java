@@ -12,6 +12,10 @@ import java.io.IOException;
 import java.awt.event.ActionEvent;
 
 public class Main {
+	
+	String fastDirectory = "";
+	String slowDirectory = "";
+	BusinessLogic logic = new BusinessLogic();
 
 	private JFrame frmAmpdSetlistGenerator;
 
@@ -42,6 +46,8 @@ public class Main {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
+		
 		frmAmpdSetlistGenerator = new JFrame();
 		frmAmpdSetlistGenerator.setTitle("AMP'D Setlist Generator");
 		frmAmpdSetlistGenerator.setBounds(100, 100, 482, 349);
@@ -71,11 +77,11 @@ public class Main {
 		generateButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				BusinessLogic logic = new BusinessLogic();
+				
 				try {
-					String fastDirectory = logic.SelectFastSongDirectory();
-					String slowDirectory = logic.SelectSlowSongDirectory();
 					
+					fastDirectory = logic.SelectFastSongDirectory();
+					slowDirectory = logic.SelectSlowSongDirectory();
 					
 					song1Label.setText(logic.GenerateSong1(fastDirectory));
 					song2Label.setText(logic.GenerateSong2(fastDirectory));
@@ -85,10 +91,11 @@ public class Main {
 					
 					
 					song3Label.setText(logic.GenerateSong3(slowDirectory));
-					
-					if(song4Label.getText() == song4Label.getText())
-						song4Label.setText(logic.GenerateSong2(fastDirectory));
 					song4Label.setText(logic.GenerateSong4(slowDirectory));
+
+					
+					if(song4Label.getText() == song3Label.getText())
+					    song4Label.setText(logic.GenerateSong4(slowDirectory));
 					
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
@@ -97,7 +104,37 @@ public class Main {
 				
 			}
 		});
-		generateButton.setBounds(183, 224, 135, 45);
+		generateButton.setBounds(90, 224, 135, 45);
 		panel.add(generateButton);
+		
+		JButton newListButton = new JButton("New List");
+		newListButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				try 
+				{
+					song1Label.setText(logic.GenerateSong1(fastDirectory));
+					song2Label.setText(logic.GenerateSong2(fastDirectory));
+					
+					if(song2Label.getText() == song1Label.getText())
+						song2Label.setText(logic.GenerateSong2(fastDirectory));
+					
+					
+					song3Label.setText(logic.GenerateSong3(slowDirectory));
+					song4Label.setText(logic.GenerateSong4(slowDirectory));
+
+					
+					if(song4Label.getText() == song3Label.getText())
+					    song4Label.setText(logic.GenerateSong4(slowDirectory));
+					
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
+		});
+		newListButton.setBounds(235, 224, 135, 45);
+		panel.add(newListButton);
 	}
 }

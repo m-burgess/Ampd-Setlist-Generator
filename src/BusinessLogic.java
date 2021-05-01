@@ -12,6 +12,8 @@ import javax.swing.JFileChooser;
 
 public class BusinessLogic 
 {
+	List<Path> result;
+	
 	public String SelectReaperProjectDirectory()
 	{
 		 JFileChooser chooser = new JFileChooser();
@@ -22,7 +24,7 @@ public class BusinessLogic
 
 		    if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) 
 		    {
-		      return chooser.getCurrentDirectory().toString();
+		      return chooser.getCurrentDirectory().getAbsolutePath().toString();
 		    }
 		    else 
 		    {
@@ -33,13 +35,13 @@ public class BusinessLogic
 	public String SelectFastSongDirectory()
 	{
 		String reaperDirectory;
-		return reaperDirectory = SelectReaperProjectDirectory() + "/Fast";
+		return reaperDirectory = SelectReaperProjectDirectory();
 	}
 	
 	public String SelectSlowSongDirectory()
 	{
 		String reaperDirectory;
-		return reaperDirectory = SelectReaperProjectDirectory() + "/Slow";
+		return reaperDirectory = SelectReaperProjectDirectory();
 	}
 	
 	
