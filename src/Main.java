@@ -116,7 +116,7 @@ public class Main {
 					song1Label.setText(logic.GenerateSong1(fastDirectory));
 					song2Label.setText(logic.GenerateSong2(fastDirectory));
 					
-					if(song2Label.getText() == song1Label.getText())
+					if(song2Label.getText().equals(song1Label.getText()))
 						song2Label.setText(logic.GenerateSong2(fastDirectory));
 					
 					
@@ -124,7 +124,7 @@ public class Main {
 					song4Label.setText(logic.GenerateSong4(slowDirectory));
 
 					
-					if(song4Label.getText() == song3Label.getText())
+					if(song4Label.getText().equals(song3Label.getText()))
 					    song4Label.setText(logic.GenerateSong4(slowDirectory));
 					
 				} catch (IOException e1) {
